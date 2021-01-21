@@ -1,27 +1,43 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <script src="./index2.js"></script>
-    <script src="./names.js"></script>
-    <script src="./index2.js"></script>
+    <script>
+        let names = [
+            { firstName: "Sam", lastName: "Alex" },
+            { firstName: "Julia", lastName: "Box" },
+            { firstName: "Alberto", lastName: "Dallas" },
+            { firstName: "Mohamed", lastName: "Fahad" },
+            { firstName: "Jasmin", lastName: "Nasir" },
+            { firstName: "Zac", lastName: "Rox" },
+            { firstName: "Roy", lastName: "Tom" },
+        ];
+        function getAllHtml() {
+            let html = "<ul>";
+            names.forEach(element => {
+                html += `<li>${element.firstName + ", " + element.lastName}</li>`;
+            });
+            document.getElementById("names").innerHTML = html + "</ul>";
+        }
+    </script>
 
     <title>AD320 Personal Assignment Project</title>
-    <link href="./styles.css" type="text/css" rel="stylesheet">    
+    <link href="./styles.css" type="text/css" rel="stylesheet">
 </head>
-    
+
 <body>
     <header>
-        <h1>AD320 Week2 Personal Assignment</h1>    
+        <h1>AD320 Week2 Personal Assignment</h1>
     </header>
 
-    <div id="wrapper">    
+    <div id="wrapper">
         <main>
             <fieldset>
-                <legend >NAMES</legend>
+                <legend>NAMES</legend>
                 <div id="names">
                     <h4>Press the below link to Disply all names:</h4>
-                    <button id="showNames" onclick="getAllHtml()">Show Names</button> 
+                    <button id="showNames" onclick="getAllHtml()">Show Names</button>
 
                     <div>
 
@@ -29,14 +45,14 @@
                 </div>
             </fieldset>
         </main>
-    
+
         <aside>
             <form method="POST" action="/">
                 <div class="row">
                     <P>Press here to get the JSON POST result</P>
                     <button>Active Post</button>
                 </div>
-            </form>   
+            </form>
         </aside>
 
         <footer>
@@ -46,6 +62,7 @@
                 <li><a href="./index.html">AD320 Week2 Assignment</a></li>
             </ul>
         </footer>
-    </div> 
+    </div>
 </body>
+
 </html>
