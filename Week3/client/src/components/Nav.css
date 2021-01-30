@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+
+.nav {
+    height:100px;
+    width: 100%;
+    background-color:lightsteelblue;
+    line-height:50px;
+}
+
+.nav ul {
+    width:1000px;
+    margin:5 auto;
+}
+
+.nav li {
+    font-family: 'Open Sans', sans-serif;
+    float:left;
+    width:20%;
+    list-style-type:none;
+    text-align:center;
+    margin:auto auto;
+}
+
+.nav a {
+    color:#fff;
+    text-decoration:none;
+    display:block;
+    margin:auto auto;
+}
+
+.nav a:hover {
+    background-color:steelblue;
+}
+
