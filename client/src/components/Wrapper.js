@@ -6,8 +6,8 @@ import './Wrapper.css';
 export default function Wrapper() {
     return (
         <div className = "wrapper">
-                <Main></Main>
-                <Aside></Aside>
+            <Main></Main>
+            <Aside></Aside>
         </div>
     )
 }
