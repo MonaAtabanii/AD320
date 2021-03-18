@@ -5,7 +5,7 @@ const fs = require('fs');
 
 let name = require("./names.js");
   
-http.createServer(function (req, res) {
+const serverRunner = function (req, res) {
     if (req.method == 'GET' && req.url == '/names') {
         fs.readFile('home.html', function(error, file) {
             res.writeHead(200, {'Content-Type': 'text/html'});
@@ -13,16 +13,26 @@ http.createServer(function (req, res) {
             return res.end();
         });
     }    
+
     else if (req.method == 'POST' && req.url == '/') {
-        res.writeHead(200, {'Content-Type': 'application/json'});
-            let all = name.getAll();
-            let resultAll = (all) ? JSON.stringify(all): "Empty Array";
-            res.write(resultAll);
-        res.end("\n");
+        let initData = [];
+        req.on('initData', function(chunck) {
+            initData.push(chunck);
+        })
+
+        req.on('end', function () {
+            let data = Buffer.concat(initData)
+            const result = JSON.parse(JSON.stringify(data));
+            console.log(result);
+            const returnName = result.answer;
+            res.write(`The new insertion is: ${returnName}`);
+        })
+        res.end();
     }
     else{
-        res.writeHead(404, {'Content-Type': 'text/plain'});
-        res.end('404: Sorry page Not found');
+        res.end('Play with names array');
     }
+}
 
-}).listen(3000); 
+const server = http.createServer(serverRunner);
+server.listen(3000); 
